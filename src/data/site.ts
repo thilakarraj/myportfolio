@@ -1,5 +1,4 @@
-/** Prefix applied to plain asset links when deployed under a sub-path (GitHub Pages). */
-export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+import { withBasePath } from "@/lib/paths";
 
 export const site = {
   name: "Thilakar Raj S",
@@ -15,10 +14,11 @@ export const site = {
   phoneHref: "tel:+919524542420",
   linkedin: "https://www.linkedin.com/in/thilakar-raj-suyambu",
   github: "https://github.com/thilakarraj",
-  resumePath: `${basePath}/Thilakar_Raj_Technical_Lead.pdf`,
+  resumePath: withBasePath("/Thilakar_Raj_Technical_Lead.pdf"),
   /** Deployed URL (GitHub Pages). Update if you move to a custom domain. */
   url: "https://thilakarraj.github.io/myportfolio",
-  profileImage: `${basePath}/images/profile.jpg`,
+  /** Root-relative. ProfileImage prefixes BASE_PATH for GitHub Pages. */
+  profileImage: "/images/profile.jpg",
   availability: "Available for meaningful engineering challenges",
   description:
     "Portfolio of Thilakar Raj S, a Technical Lead Engineer and Software Architect specializing in Java, Spring Boot, microservices, scalable platforms, healthcare systems, logistics and AI orchestration.",

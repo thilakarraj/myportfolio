@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ArrowUpRight, Check, Copy, Download, Mail, Phone } from "lucide-react";
 import { site } from "@/data/site";
-import { LinkedinIcon } from "@/components/ui/icons";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { buttonClasses } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
@@ -67,7 +67,7 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="mx-auto mt-14 grid max-w-[62rem] gap-3 sm:grid-cols-3">
+        <Reveal delay={0.1} className="mx-auto mt-14 grid max-w-[62rem] gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <a
             href={site.linkedin}
             target="_blank"
@@ -82,6 +82,25 @@ export function Contact() {
               <span className="text-left">
                 <span className="block text-label">LinkedIn</span>
                 <span className="block text-sm font-medium text-text">thilakar-raj-suyambu</span>
+              </span>
+            </span>
+            <ArrowUpRight className="size-4 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+          </a>
+
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="link"
+            className="group surface-card flex items-center justify-between gap-4 p-5 transition-colors hover:border-border-strong hover:bg-surface-2"
+          >
+            <span className="flex items-center gap-3">
+              <span className="inline-flex size-10 items-center justify-center rounded-xl bg-surface-2 text-text">
+                <GithubIcon className="size-4" aria-hidden />
+              </span>
+              <span className="text-left">
+                <span className="block text-label">GitHub</span>
+                <span className="block text-sm font-medium text-text">thilakarraj</span>
               </span>
             </span>
             <ArrowUpRight className="size-4 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />

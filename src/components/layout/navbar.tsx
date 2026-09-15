@@ -7,6 +7,7 @@ import { navLinks, site } from "@/data/site";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { buttonClasses } from "@/components/ui/button";
+import { GithubIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 
 const ids = navLinks.map((l) => l.id);
@@ -250,6 +251,15 @@ export function Navbar({ onOpenPalette }: { onOpenPalette?: () => void }) {
                   className={buttonClasses({ variant: "outline", size: "lg", className: "w-full" })}
                 >
                   Connect on LinkedIn
+                </a>
+                <a
+                  href={site.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={buttonClasses({ variant: "outline", size: "lg", className: "w-full" })}
+                >
+                  <GithubIcon className="size-4" aria-hidden />
+                  GitHub profile
                 </a>
               </div>
             </motion.div>

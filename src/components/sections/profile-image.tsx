@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { site } from "@/data/site";
+import { withBasePath } from "@/lib/paths";
 import { cn } from "@/lib/utils";
 
 interface ProfileImageProps {
@@ -27,7 +28,7 @@ export function ProfileImage({ className, sizes = "(min-width: 1024px) 320px, 22
     >
       {!failed ? (
         <Image
-          src={site.profileImage}
+          src={withBasePath(site.profileImage)}
           alt={`Portrait of ${site.name}, ${site.title}`}
           fill
           priority={priority}

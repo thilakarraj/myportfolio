@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
-import { basePath, site } from "@/data/site";
+import { site } from "@/data/site";
+import { withBasePath } from "@/lib/paths";
 import { ThemeScript } from "@/components/providers/theme-script";
 import "./globals.css";
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: { type: "profile", title, description: site.description, url: "/", siteName: "Thilakar Raj S", locale: "en_IN", firstName: "Thilakar Raj", lastName: "S" },
   twitter: { card: "summary_large_image", title, description: site.description },
   robots: { index: true, follow: true },
-  icons: { icon: [{ url: `${basePath}/icon.svg`, type: "image/svg+xml" }] },
+  icons: { icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }] },
 };
 
 export const viewport: Viewport = {
@@ -44,7 +45,12 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${manrope.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <head>
         <ThemeScript />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />

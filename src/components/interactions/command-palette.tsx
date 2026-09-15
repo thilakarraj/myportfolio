@@ -12,7 +12,7 @@ import {
   Search,
   SunMoon,
 } from "lucide-react";
-import { LinkedinIcon } from "@/components/ui/icons";
+import { LinkedinIcon, GithubIcon } from "@/components/ui/icons";
 import { navLinks, site } from "@/data/site";
 import { projects } from "@/data/projects";
 import { useTheme } from "@/hooks/use-theme";
@@ -115,6 +115,17 @@ export function CommandPalette({ open, onClose }: CommandPaletteProps) {
         icon: LinkedinIcon,
         run: () => {
           window.open(site.linkedin, "_blank", "noopener,noreferrer");
+          onClose();
+        },
+      },
+      {
+        id: "github",
+        group: "Actions",
+        label: "Open GitHub profile",
+        hint: "thilakarraj",
+        icon: GithubIcon,
+        run: () => {
+          window.open(site.github, "_blank", "noopener,noreferrer");
           onClose();
         },
       },

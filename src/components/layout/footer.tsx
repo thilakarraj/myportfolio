@@ -1,6 +1,6 @@
-import { ArrowUp, Github, Mail } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import { site } from "@/data/site";
-import { LinkedinIcon } from "@/components/ui/icons";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -40,7 +40,7 @@ export function Footer() {
             </li>
             <li>
               <a href={site.github} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2">
-                <Github className="size-3.5" aria-hidden />
+                <GithubIcon className="size-3.5" aria-hidden />
                 GitHub
               </a>
             </li>
