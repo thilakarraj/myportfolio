@@ -1,4 +1,4 @@
-import { ArrowUp, Mail } from "lucide-react";
+import { ArrowUp, Github, Mail } from "lucide-react";
 import { site } from "@/data/site";
 import { LinkedinIcon } from "@/components/ui/icons";
 
@@ -27,31 +27,25 @@ export function Footer() {
         <div className="flex flex-col gap-4 md:items-end">
           <ul className="flex flex-wrap gap-2">
             <li>
-              <a
-                href={`mailto:${site.email}`}
-                className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2"
-              >
+              <a href={`mailto:${site.email}`} className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2">
                 <Mail className="size-3.5" aria-hidden />
                 {site.email}
               </a>
             </li>
             <li>
-              <a
-                href={site.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2"
-              >
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2">
                 <LinkedinIcon className="size-3.5" aria-hidden />
                 LinkedIn
               </a>
             </li>
             <li>
-              <a
-                href="#top"
-                aria-label="Back to top"
-                className="inline-flex size-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:text-text hover:bg-surface-2"
-              >
+              <a href={site.github} target="_blank" rel="noopener noreferrer" className="inline-flex h-9 items-center gap-2 rounded-full border border-border px-3.5 text-sm text-muted transition-colors hover:text-text hover:bg-surface-2">
+                <Github className="size-3.5" aria-hidden />
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="#top" aria-label="Back to top" className="inline-flex size-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:text-text hover:bg-surface-2">
                 <ArrowUp className="size-3.5" aria-hidden />
               </a>
             </li>
