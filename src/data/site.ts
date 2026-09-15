@@ -14,10 +14,11 @@ export const site = {
   phone: "+91 95245 42420",
   phoneHref: "tel:+919524542420",
   linkedin: "https://www.linkedin.com/in/thilakar-raj-suyambu",
+  github: "https://github.com/thilakarraj",
   resumePath: `${basePath}/Thilakar_Raj_Technical_Lead.pdf`,
   /** Deployed URL (GitHub Pages). Update if you move to a custom domain. */
   url: "https://thilakarraj.github.io/myportfolio",
-  profileImage: "/images/profile.jpg",
+  profileImage: `${basePath}/images/profile.jpg`,
   availability: "Available for meaningful engineering challenges",
   description:
     "Portfolio of Thilakar Raj S, a Technical Lead Engineer and Software Architect specializing in Java, Spring Boot, microservices, scalable platforms, healthcare systems, logistics and AI orchestration.",
