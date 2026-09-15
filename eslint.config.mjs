@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Agent skill bundles are not application code.
+    ".cursor/**",
   ]),
 ]);
 

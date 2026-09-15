@@ -1,26 +1,356 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------
+   Design tokens — primitive → semantic. Dark is the default theme.
+   ------------------------------------------------------------------ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
+
+  --bg: #0b0c0f;
+  --bg-elevated: #10121a;
+  --surface: #13151c;
+  --surface-2: #191c25;
+  --surface-hover: #1f232e;
+
+  --text: #f4f1ea;
+  --text-muted: #9aa3b2;
+  --text-subtle: #7d8695; /* ≥ 5.4:1 on --bg */
+
+  --accent: #b7f04a;
+  --accent-strong: #c9ff5c;
+  --accent-fg: #0b0c0f;
+  --accent-soft: rgba(183, 240, 74, 0.12);
+
+  --secondary: #9d8cff;
+  --secondary-soft: rgba(157, 140, 255, 0.14);
+
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --ring: #c9ff5c;
+
+  --glass: rgba(15, 17, 24, 0.72);
+  --scrim: rgba(4, 5, 8, 0.72);
+  --grid-line: rgba(255, 255, 255, 0.04);
+
+  --shadow-soft: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+  --glow-accent: 0 0 0 1px rgba(183, 240, 74, 0.25), 0 12px 40px -12px rgba(183, 240, 74, 0.35);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --nav-h: 4.5rem;
+  --container: 76rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 480ms;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f6f5f0;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0efe9;
+  --surface-hover: #e9e8e1;
+
+  --text: #14161b;
+  --text-muted: #525b68;
+  --text-subtle: #5f6874; /* ≥ 5:1 on light --bg */
+
+  --accent: #3e7a0c;
+  --accent-strong: #2f6207;
+  --accent-fg: #ffffff;
+  --accent-soft: rgba(62, 122, 12, 0.1);
+
+  --secondary: #5e4bd1;
+  --secondary-soft: rgba(94, 75, 209, 0.1);
+
+  --border: rgba(20, 22, 27, 0.09);
+  --border-strong: rgba(20, 22, 27, 0.18);
+  --ring: #2f6207;
+
+  --glass: rgba(255, 255, 255, 0.76);
+  --scrim: rgba(20, 22, 27, 0.55);
+  --grid-line: rgba(20, 22, 27, 0.05);
+
+  --shadow-soft: 0 24px 60px -30px rgba(20, 22, 27, 0.25);
+  --glow-accent: 0 0 0 1px rgba(62, 122, 12, 0.25), 0 12px 40px -12px rgba(62, 122, 12, 0.3);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-hover: var(--surface-hover);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-glow: var(--glow-accent);
+
+  --ease-out-expo: var(--ease-out);
+
+  --breakpoint-xs: 26rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    line-height: 1.6;
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  button,
+  [role="button"],
+  a {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ------------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------------ */
+@utility container-x {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 5rem;
+  @media (min-width: 768px) {
+    padding-block: 7rem;
+  }
+  @media (min-width: 1024px) {
+    padding-block: 8.5rem;
+  }
+}
+
+@utility glass {
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid var(--border);
+}
+
+@utility surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@utility text-display {
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+@utility text-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility fade-edges-x {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 12%,
+    #000 88%,
+    transparent
+  );
+}
+
+/* Cursor hiding only on fine pointers when the custom cursor is mounted. */
+@media (pointer: fine) {
+  html[data-custom-cursor="true"],
+  html[data-custom-cursor="true"] a,
+  html[data-custom-cursor="true"] button,
+  html[data-custom-cursor="true"] [role="button"] {
+    cursor: none;
+  }
+}
+
+/* Ticker */
+@keyframes ticker {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.ticker-track {
+  animation: ticker 38s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track[data-paused="true"],
+.ticker:hover .ticker-track,
+.ticker:focus-within .ticker-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* Architecture flow dash animation */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.flow-line {
+  stroke-dasharray: 6 6;
+  animation: flow-dash 1.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-line {
+    animation: none;
+  }
+}
+
+/* Orbital rotation */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin-slow-reverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+.orbit-a {
+  animation: spin-slow 42s linear infinite;
+  transform-origin: center;
+}
+.orbit-b {
+  animation: spin-slow-reverse 60s linear infinite;
+  transform-origin: center;
+}
+.orbit-c {
+  animation: spin-slow 90s linear infinite;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-a,
+  .orbit-b,
+  .orbit-c {
+    animation: none;
+  }
+}
+
+/* Native dialog */
+dialog::backdrop {
+  background: var(--scrim);
+  backdrop-filter: blur(6px);
+}
+dialog[open] {
+  animation: dialog-in var(--dur-base) var(--ease-out);
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scrollbar (subtle) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
 }
