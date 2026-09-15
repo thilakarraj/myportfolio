@@ -7,11 +7,6 @@ export interface Experience {
   points: string[];
 }
 
-/**
- * Dates are presented exactly as supplied in the source documents.
- * The two Just Integrate IT roles overlap in the source (Oct 2021 – Dec 2024 and
- * Nov 2014 – Dec 2021); they are intentionally not "corrected" here.
- */
 export const experience: Experience[] = [
   {
     role: "Technical Lead Engineer",
@@ -46,7 +41,7 @@ export const experience: Experience[] = [
     role: "Software Engineer",
     company: "Just Integrate IT Pvt Ltd",
     location: "Chennai",
-    period: "Nov 2014 – Dec 2021",
+    period: "Nov 2014 – Sep 2021",
     points: [
       "Enterprise web applications and backend services",
       "Java, Spring, Hibernate and REST",

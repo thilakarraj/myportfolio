@@ -17,7 +17,7 @@ export function ExperienceSection() {
               Eleven years of <span className="text-accent">shipping.</span>
             </>
           }
-          description="Roles and periods are shown exactly as listed in the source résumé."
+          description="From hands-on backend engineering through technical leadership."
         />
 
         <ol className="relative">
@@ -78,14 +78,6 @@ export function ExperienceSection() {
             </Reveal>
           ))}
         </ol>
-
-        <Reveal className="mt-8">
-          <p className="max-w-[70ch] text-xs leading-relaxed text-subtle">
-            Note: the two Just Integrate IT roles overlap in the source document
-            (Oct 2021 – Dec 2024 and Nov 2014 – Dec 2021). They are presented
-            as supplied rather than recalculated.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

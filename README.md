@@ -42,7 +42,7 @@ src/
   data/                  # all copy/content lives here — edit these, not the components
     site.ts              # name, contact, nav links, ticker items
     projects.ts          # selected work (5 projects)
-    experience.ts        # career history (dates kept exactly as supplied)
+    experience.ts        # career history
     skills.ts            # grouped skills
     architecture.ts      # architecture layers + principles
   components/
@@ -159,7 +159,7 @@ variables (`--bg`, `--surface`, `--text`, `--accent`, …) mapped into Tailwind 
 - [x] All icon-only controls have `aria-label`; decorative icons are `aria-hidden`
 - [x] Links: résumé PDF, LinkedIn, `mailto:`, `tel:` all resolve
 - [x] No text is hover-only; tags/summaries are always visible
-- [x] No unsupported claims (no revenue, percentages, team sizes or awards); dates shown exactly as supplied
+- [x] No unsupported claims (no revenue, percentages, team sizes or awards)
 
 ## 21st.dev-inspired components
 
