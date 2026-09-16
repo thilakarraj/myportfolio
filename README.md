@@ -218,8 +218,9 @@ Verification files are already on the site:
 After a deploy:
 
 1. Open [Google Search Console](https://search.google.com/search-console) and click **Verify** on the URL-prefix property `https://thilakarraj.github.io/myportfolio/`
-2. Submit the sitemap: `https://thilakarraj.github.io/myportfolio/sitemap.xml`
-3. Request indexing for the home URL after the first successful crawl
+2. On **Sitemaps**, enter `sitemap.xml` (the prefix is already filled). That submits `https://thilakarraj.github.io/myportfolio/sitemap.xml`
+3. If status is **Couldn't fetch**, wait a few minutes after a deploy, remove the sitemap (⋮ menu), and submit `sitemap.xml` again. This is common on `github.io` and does not mean the file is broken.
+4. Use **URL Inspection** on `https://thilakarraj.github.io/myportfolio/` and click **Request indexing** — that works even while the sitemap is stuck.
 
 Also keep LinkedIn (`https://www.linkedin.com/in/thilakar-raj-suyambu/`) and GitHub (`https://github.com/thilakarraj`) public and pointing at this URL — those are the profiles already ranking for your name.
 
