@@ -1,6 +1,6 @@
-# Thilakar Raj S — Portfolio
+# Thilakar Raj Suyambu — Portfolio
 
-Single-page portfolio for **Thilakar Raj S**, Technical Lead Engineer / Software Architect (Chennai, India).
+Official portfolio of **Thilakar Raj Suyambu** (Thilakar Raj), Technical Manager, Solution Architect and Java Technical Lead in Chennai, India.
 Built with Next.js (App Router), TypeScript, Tailwind CSS v4, Motion and Lucide.
 
 ## Stack
@@ -36,7 +36,9 @@ npm run start        # serve the production build
 ```
 src/
   app/
-    layout.tsx           # fonts, metadata, Open Graph, JSON-LD Person, theme script
+    layout.tsx           # fonts, metadata, Open Graph, JSON-LD, theme script
+    sitemap.ts           # sitemap.xml for crawlers
+    robots.ts            # robots.txt
     page.tsx             # section order
     globals.css          # design tokens (dark default + light), utilities, keyframes
   data/                  # all copy/content lives here — edit these, not the components
@@ -190,6 +192,31 @@ refined with targeted domain searches (`style: dark mode`, `color: developer too
 - **UX** — Auto-rotating content rule: the ticker and architecture walkthrough both stop on hover/focus, expose a pause control and stop under reduced motion. Horizontal-scroll rule: ticker is clipped and masked; `overflow-x: clip` on `body`. Target-size rule: all controls ≥ 36–44 px.
 - **Accessibility** — Focus-visible rings on every control including dialog internals; `scroll-padding-top` so sticky nav never obscures focus (WCAG 2.2 “Focus Not Obscured”); decorative icons `aria-hidden`; meaningful icons labelled.
 - **Motion** — Scroll reveal kept to a fade with ≤ 18 px offset (“reads as a fade, not a slide”), stagger 50–80 ms, expo-out easing, `once: true` to avoid re-triggering; hero text uses a short line mask rather than per-character splitting; everything respects `prefers-reduced-motion`.
+
+## Search engines (SEO)
+
+This does **not** guarantee a first-page or first-position ranking. It makes the site technically eligible to be crawled, indexed, and associated with the right person.
+
+Implemented:
+
+- Title and meta description that include **Thilakar Raj Suyambu**, **Technical Manager**, **Solution Architect**, and **Java**
+- Canonical URL `https://thilakarraj.github.io/myportfolio/`
+- Open Graph + Twitter card metadata and `public/og.png` (1200×630 share image)
+- `robots.txt` and `sitemap.xml`
+- JSON-LD `ProfilePage` + `Person` (name, alternate names, job titles, employer, `sameAs` LinkedIn/GitHub)
+- On-page name and role copy in the hero and about sections
+
+### Google Search Console (required for discovery)
+
+Google will not reliably find a GitHub Pages project site until you claim it:
+
+1. Open [Google Search Console](https://search.google.com/search-console).
+2. Add a **URL prefix** property: `https://thilakarraj.github.io/myportfolio/`
+3. Verify with the HTML tag method: set repo secret / env `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to the token Google shows, then redeploy — or use the DNS method on a custom domain later.
+4. Submit the sitemap: `https://thilakarraj.github.io/myportfolio/sitemap.xml`
+5. Request indexing for the home URL after the first successful crawl.
+
+Also keep LinkedIn (`https://www.linkedin.com/in/thilakar-raj-suyambu/`) and GitHub (`https://github.com/thilakarraj`) public and pointing at this URL — those are the profiles already ranking for your name.
 
 ## License
 

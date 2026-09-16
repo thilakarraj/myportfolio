@@ -19,7 +19,7 @@ export function Footer() {
             </span>
             {site.brand}
           </a>
-          <p className="mt-4 text-sm font-medium text-text">{site.name}</p>
+          <p className="mt-4 text-sm font-medium text-text">{site.fullName}</p>
           <p className="text-sm text-muted">{site.title}</p>
           <p className="mt-1 text-sm text-subtle">{site.location}</p>
         </div>

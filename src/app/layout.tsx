@@ -1,46 +1,92 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Geist_Mono } from "next/font/google";
-import { site } from "@/data/site";
+import { site, siteUrl } from "@/data/site";
 import { withBasePath } from "@/lib/paths";
+import { jsonLd, serializeJsonLd } from "@/lib/json-ld";
 import { ThemeScript } from "@/components/providers/theme-script";
 import "./globals.css";
 
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
-const title = "Thilakar Raj S — Technical Lead Engineer & Software Architect";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: site.seoTitle,
+    template: `%s | ${site.fullName}`,
+  },
   description: site.description,
-  applicationName: "Thilakar Raj S Portfolio",
-  authors: [{ name: site.name, url: site.linkedin }],
-  keywords: ["Thilakar Raj", "Technical Lead Engineer", "Software Architect", "Java", "Spring Boot", "Microservices", "AI Orchestration", "Healthcare Systems", "Logistics Platforms", "Chennai"],
-  alternates: { canonical: "/" },
-  openGraph: { type: "profile", title, description: site.description, url: "/", siteName: "Thilakar Raj S", locale: "en_IN", firstName: "Thilakar Raj", lastName: "S" },
-  twitter: { card: "summary_large_image", title, description: site.description },
-  robots: { index: true, follow: true },
+  applicationName: `${site.fullName} Portfolio`,
+  authors: [{ name: site.fullName, url: siteUrl }],
+  creator: site.fullName,
+  publisher: site.fullName,
+  keywords: [
+    "Thilakar Raj",
+    "Thilakar Raj Suyambu",
+    "Thilakar Raj S",
+    "Thilakar Raj Technical Manager",
+    "Thilakar Raj Solution Architect",
+    "Thilakar Raj Java Technical Manager",
+    "Technical Manager",
+    "Solution Architect",
+    "Technical Lead Engineer",
+    "Software Architect",
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "Chennai",
+  ],
+  alternates: { canonical: siteUrl },
+  openGraph: {
+    type: "profile",
+    title: site.seoTitle,
+    description: site.description,
+    url: siteUrl,
+    siteName: site.fullName,
+    locale: "en_IN",
+    firstName: "Thilakar Raj",
+    lastName: "Suyambu",
+    username: "thilakarraj",
+    images: [
+      {
+        url: `${site.url}/og.png`,
+        width: 1200,
+        height: 630,
+        alt: `${site.fullName} — Technical Manager, Solution Architect and Java Technical Lead`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.seoTitle,
+    description: site.description,
+    images: [`${site.url}/og.png`],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  category: "portfolio",
   icons: { icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }] },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
-  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#0b0c0f" }, { media: "(prefers-color-scheme: light)", color: "#f6f5f0" }],
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0b0c0f" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f5f0" },
+  ],
   width: "device-width",
   initialScale: 1,
-};
-
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  jobTitle: site.title,
-  email: `mailto:${site.email}`,
-  telephone: site.phone,
-  url: site.url,
-  image: `${site.url}${site.profileImage}`,
-  sameAs: [site.linkedin, site.github],
-  address: { "@type": "PostalAddress", addressLocality: "Chennai", addressCountry: "IN" },
-  knowsAbout: ["Java", "Spring Boot", "Microservices", "Software Architecture", "Healthcare Systems", "Logistics Platforms", "AI Orchestration", "React Native"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -53,7 +99,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <ThemeScript />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        />
       </head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

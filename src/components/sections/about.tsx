@@ -61,12 +61,12 @@ export function About() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-7 max-w-[62ch] text-base leading-relaxed text-muted md:text-lg">
-                Thilakar Raj S is a Technical Lead Engineer with 11+ years of
-                software engineering experience across healthcare, medical
-                diagnostics, logistics, enterprise SaaS, mobile applications,
-                and AI-driven automation. He combines hands-on engineering with
-                the responsibilities that keep a platform healthy long after
-                launch.
+                Thilakar Raj Suyambu is a Technical Lead Engineer, Technical Manager
+                and Solution Architect with 11+ years of software engineering
+                experience across healthcare, medical diagnostics, logistics,
+                enterprise SaaS, mobile applications, and AI-driven automation. He
+                combines hands-on Java and Spring Boot engineering with the
+                responsibilities that keep a platform healthy long after launch.
               </p>
             </Reveal>
 

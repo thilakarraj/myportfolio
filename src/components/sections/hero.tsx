@@ -13,8 +13,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const lines = ["Complex systems.", "Clear direction."];
 const roles = [
   "Technical Lead",
-  "Software Architect",
-  "Backend & distributed systems",
+  "Solution Architect",
+  "Java platforms",
   "AI orchestration",
 ];
 
@@ -62,6 +62,9 @@ export function Hero() {
             id="hero-title"
             className="text-display text-[clamp(2.75rem,10.5vw,4.25rem)] sm:text-[clamp(3rem,7.5vw,5.25rem)] lg:text-[clamp(3.25rem,4.2vw,4.5rem)]"
           >
+            <span className="sr-only">
+              {site.fullName} — Technical Manager, Solution Architect and Java Technical Lead.{" "}
+            </span>
             {lines.map((line, i) => (
               <span key={line} className="block overflow-hidden">
                 <motion.span
@@ -80,9 +83,10 @@ export function Hero() {
             {...fade(0.45)}
             className="mt-7 max-w-[54ch] text-base leading-relaxed text-muted sm:text-lg"
           >
-            I&apos;m <span className="text-text font-semibold">{site.name}</span>, a{" "}
-            {site.title} in {site.location} with {site.experience} of building
-            healthcare, logistics and AI platforms that stay maintainable at scale.
+            I&apos;m <span className="text-text font-semibold">{site.fullName}</span>, a{" "}
+            Technical Lead Engineer, Technical Manager and Solution Architect in {site.location} with{" "}
+            {site.experience} of building Java, healthcare, logistics and AI platforms that stay
+            maintainable at scale.
           </motion.p>
 
           <motion.ul
