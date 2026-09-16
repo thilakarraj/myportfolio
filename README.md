@@ -208,13 +208,18 @@ Implemented:
 
 ### Google Search Console (required for discovery)
 
-Google will not reliably find a GitHub Pages project site until you claim it:
+Google will not reliably find a GitHub Pages project site until you claim it.
 
-1. Open [Google Search Console](https://search.google.com/search-console).
-2. Add a **URL prefix** property: `https://thilakarraj.github.io/myportfolio/`
-3. Verify with the HTML tag method: set repo secret / env `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` to the token Google shows, then redeploy — or use the DNS method on a custom domain later.
-4. Submit the sitemap: `https://thilakarraj.github.io/myportfolio/sitemap.xml`
-5. Request indexing for the home URL after the first successful crawl.
+Verification files are already on the site:
+
+- HTML tag: `google-site-verification` on the home page
+- HTML file: `https://thilakarraj.github.io/myportfolio/google2f4b4d53c5093a92.html`
+
+After a deploy:
+
+1. Open [Google Search Console](https://search.google.com/search-console) and click **Verify** on the URL-prefix property `https://thilakarraj.github.io/myportfolio/`
+2. Submit the sitemap: `https://thilakarraj.github.io/myportfolio/sitemap.xml`
+3. Request indexing for the home URL after the first successful crawl
 
 Also keep LinkedIn (`https://www.linkedin.com/in/thilakar-raj-suyambu/`) and GitHub (`https://github.com/thilakarraj`) public and pointing at this URL — those are the profiles already ranking for your name.
 

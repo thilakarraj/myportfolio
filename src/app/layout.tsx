@@ -75,9 +75,7 @@ export const metadata: Metadata = {
   },
   category: "portfolio",
   icons: { icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }] },
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
-    : {}),
+  verification: { google: "tAPeAVGWspCLdEOAcLw_KyqKjltxtmdLIOa8QwQ40w4" },
 };
 
 export const viewport: Viewport = {
