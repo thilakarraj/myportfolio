@@ -3,7 +3,14 @@ export type ProjectMotif =
   | "ble"
   | "pipeline"
   | "etl"
-  | "carriers";
+  | "carriers"
+  | "vision";
+
+export interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  caption: string;
+}
 
 export interface Project {
   slug: string;
@@ -17,8 +24,9 @@ export interface Project {
   motif: ProjectMotif;
   /** Grid span hints for the bento layout (desktop). */
   span: "wide" | "tall" | "default";
-  /** Folder under public/images/projects/ reserved for future screenshots. */
+  /** Folder under public/images/projects/. */
   assetFolder: string;
+  screenshots?: ProjectScreenshot[];
 }
 
 export const projects: Project[] = [
@@ -184,5 +192,55 @@ export const projects: Project[] = [
     motif: "carriers",
     span: "wide",
     assetFolder: "shipcrm",
+  },
+  {
+    slug: "multi-drug-screen-cv",
+    name: "Multi-Drug Screen Test — Computer Vision POC",
+    category: "POC / R&D",
+    domain: "Computer Vision / R&D",
+    summary:
+      "A computer-vision proof of concept that reads a photographed multi-lane screen cassette, locates strip lanes, and overlays control/test-line geometry.",
+    description: [
+      "Reading a multi-lane screen cassette by eye is visual and repetitive. This R&D pass asks whether a still photo of the cassette can be turned into lane geometry and line-presence overlays.",
+      "The pipeline is generic computer vision: capture a cassette photo, locate the strip lanes, detect control and test lines, then draw review overlays on the source image. Labels on the annotated still are computer-vision output for inspection — not a clinical result, and not a production medical device.",
+    ],
+    highlights: [
+      "Still-photo capture of a multi-lane screen cassette",
+      "Lane localization with geometry overlays",
+      "Control and test line presence classified as computer-vision output",
+      "Annotated stills intended for visual review",
+      "Scoped as a proof of concept, not a certified diagnostic",
+    ],
+    tags: [
+      "Computer Vision",
+      "Image Processing",
+      "AI",
+      "Pattern Detection",
+      "Image Classification",
+      "Automated Test Analysis",
+      "Proof of Concept",
+    ],
+    motif: "vision",
+    span: "default",
+    assetFolder: "multi-drug-screen-cv",
+    screenshots: [
+      {
+        src: "/images/projects/multi-drug-screen-cv/capture.jpg",
+        alt: "Sanitized photograph of a multi-lane screen cassette used as pipeline input",
+        caption:
+          "Source cassette still after identifying marks were removed. Pipeline input only.",
+      },
+      {
+        src: "/images/projects/multi-drug-screen-cv/lanes.jpg",
+        alt: "Same cassette photograph with lane-geometry overlay lines drawn by the locator step",
+        caption: "Lane-geometry overlay from the locator step.",
+      },
+      {
+        src: "/images/projects/multi-drug-screen-cv/overlay.jpg",
+        alt: "Cassette photograph with lane guides and control or test line presence labels from the computer-vision pipeline",
+        caption:
+          "Lane guides plus control/test-line presence labels. Computer-vision output for review — not a clinical result.",
+      },
+    ],
   },
 ];

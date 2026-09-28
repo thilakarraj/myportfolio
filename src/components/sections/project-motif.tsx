@@ -27,6 +27,7 @@ export function ProjectMotif({
       {kind === "pipeline" && <Pipeline />}
       {kind === "etl" && <Etl />}
       {kind === "carriers" && <Carriers />}
+      {kind === "vision" && <Vision />}
     </svg>
   );
 }
@@ -245,6 +246,43 @@ function Carriers() {
           </g>
         );
       })}
+    </>
+  );
+}
+
+function Vision() {
+  const steps = [
+    { x: 16, t: "PHOTO" },
+    { x: 92, t: "LANES" },
+    { x: 168, t: "LINES" },
+    { x: 244, t: "OVERLAY" },
+  ];
+  return (
+    <>
+      {steps.map((s, i) => (
+        <g key={s.t}>
+          <rect
+            x={s.x}
+            y="78"
+            width="60"
+            height="44"
+            rx="8"
+            className={cn(box, (s.t === "LANES" || s.t === "LINES") && "stroke-[var(--accent)]")}
+          />
+          <text x={s.x + 30} y="104" textAnchor="middle" className={label}>
+            {s.t}
+          </text>
+          {i < steps.length - 1 ? (
+            <path d={`M${s.x + 60} 100 H ${s.x + 76}`} className={`flow-line ${accent}`} />
+          ) : null}
+        </g>
+      ))}
+      <text x="160" y="48" textAnchor="middle" className={label}>
+        CAPTURE · LOCATE · DETECT
+      </text>
+      <text x="160" y="156" textAnchor="middle" className={label}>
+        CONTROL / TEST LINE REVIEW
+      </text>
     </>
   );
 }

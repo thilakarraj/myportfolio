@@ -252,6 +252,17 @@
   html[data-custom-cursor="true"] [role="button"] {
     cursor: none;
   }
+
+  /* Native <dialog showModal()> is top-layer and paints above the custom cursor. */
+  html[data-custom-cursor="true"]:has(dialog[open]) {
+    cursor: auto;
+  }
+
+  html[data-custom-cursor="true"]:has(dialog[open]) a,
+  html[data-custom-cursor="true"]:has(dialog[open]) button,
+  html[data-custom-cursor="true"]:has(dialog[open]) [role="button"] {
+    cursor: pointer;
+  }
 }
 
 /* Ticker */

@@ -1,10 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { Check, FolderOpen } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { Dialog } from "@/components/ui/dialog";
 import { Tag } from "@/components/ui/tag";
 import { ProjectMotif } from "@/components/sections/project-motif";
+import { withBasePath } from "@/lib/paths";
 
 interface ProjectDialogProps {
   project: Project | null;
@@ -78,19 +80,47 @@ export function ProjectDialog({ project, open, onClose }: ProjectDialogProps) {
                 ))}
               </ul>
 
-              <div className="mt-6 flex items-start gap-3 rounded-[var(--radius-md)] border border-dashed border-border-strong p-3.5 text-xs leading-relaxed text-subtle">
-                <FolderOpen className="mt-0.5 size-4 shrink-0" aria-hidden />
-                <p>
-                  Screenshots are intentionally omitted. Product visuals can be
-                  added later under{" "}
-                  <code className="font-mono text-muted">
-                    public/images/projects/{project.assetFolder}/
-                  </code>
-                  .
-                </p>
-              </div>
+              {project.screenshots?.length ? null : (
+                <div className="mt-6 flex items-start gap-3 rounded-[var(--radius-md)] border border-dashed border-border-strong p-3.5 text-xs leading-relaxed text-subtle">
+                  <FolderOpen className="mt-0.5 size-4 shrink-0" aria-hidden />
+                  <p>
+                    Screenshots are intentionally omitted. Product visuals can be
+                    added later under{" "}
+                    <code className="font-mono text-muted">
+                      public/images/projects/{project.assetFolder}/
+                    </code>
+                    .
+                  </p>
+                </div>
+              )}
             </div>
           </div>
+
+          {project.screenshots?.length ? (
+            <div className="border-t border-border p-6 md:p-8">
+              <h4 className="text-label mb-4">Pipeline stills</h4>
+              <ul className="space-y-5">
+                {project.screenshots.map((shot) => (
+                  <li key={shot.src}>
+                    <figure>
+                      <div className="relative aspect-[1024/437] overflow-hidden rounded-[var(--radius-md)] border border-border bg-surface-2">
+                        <Image
+                          src={withBasePath(shot.src)}
+                          alt={shot.alt}
+                          fill
+                          sizes="(min-width: 768px) 48rem, calc(100vw - 3rem)"
+                          className="object-cover"
+                        />
+                      </div>
+                      <figcaption className="mt-2 text-xs leading-relaxed text-subtle">
+                        {shot.caption}
+                      </figcaption>
+                    </figure>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </article>
       ) : null}
     </Dialog>

@@ -53,7 +53,7 @@ export function Work() {
               Platforms built to <span className="text-accent">last.</span>
             </>
           }
-          description="Five systems across healthcare, diagnostics, logistics and AI. Each card opens a detail view; visuals are conceptual diagrams, not product screenshots."
+          description="Systems across healthcare, diagnostics, logistics, AI and R&D. Each card opens a detail view. Most visuals are conceptual diagrams; the computer-vision POC includes sanitized pipeline stills."
         />
 
         <Stagger

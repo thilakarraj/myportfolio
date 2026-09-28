@@ -102,7 +102,7 @@ export function Dialog({
           data-autofocus
           onClick={onClose}
           aria-label="Close dialog"
-          className="absolute right-4 top-4 z-10 inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface-2/80 text-muted backdrop-blur transition-colors hover:text-text hover:bg-surface-hover"
+          className="absolute right-4 top-4 z-10 inline-flex size-10 items-center justify-center rounded-full border border-border bg-surface-2/80 text-muted backdrop-blur transition-colors hover:text-text hover:bg-surface-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
           <X className="size-4" aria-hidden />
         </button>
